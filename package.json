@@ -1,0 +1,28 @@
+{
+  "name": "eltrtemplate",
+  "version": "1.0.0",
+  "description": "Electron Template",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm install -g electron-packager",
+    "package": "electron-packager ./ --all",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanguneo/electronTemplate.git"
+  },
+  "keywords": [
+    "electron",
+    "template"
+  ],
+  "author": "sanguneo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanguneo/electronTemplate/issues"
+  },
+  "homepage": "https://github.com/sanguneo/electronTemplate#readme",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.2"
+  }
+}
