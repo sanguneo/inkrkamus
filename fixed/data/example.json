@@ -1,0 +1,19 @@
+{
+	"data" :[
+		{
+			"name" : "Example",
+			"path" : "example",
+			"subMenu" : [
+				{
+					"label" : "General",
+					"items" : [
+						{
+							"name" : "Account",
+							"path" : "account"
+						}
+					]
+				}
+			]
+		}
+	]
+}
