@@ -10,14 +10,14 @@ define([
 		// app은 생성한 myApp 앵귤러 모듈
 		return app.config(function($routeProvider) {
 			// Home
-			$routeProvider.when('/example', routeConfig.config('../partials/view/example/example.html', 'controllers/view/example',
+			$routeProvider.when('/', routeConfig.config('../partials/view/major/major.html', 'controllers/view/major',
 				{
 					directives: ['directives/combobox'],
-					services: ['services/view/example_data', 'services/util/formplateLoad'],
+					services: ['services/view/major_data', 'services/util/formplateLoad'],
 					filters: ['filters/to_trusted', 'filters/decodeURIComponent']
 				}
 			));
 			// 기본 경로 설정
-			$routeProvider.otherwise({redirectTo: '/example'});
+			$routeProvider.otherwise({redirectTo: '/'});
 		});
 	});

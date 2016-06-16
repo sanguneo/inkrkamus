@@ -16,7 +16,7 @@ define([/*foo/bar*/], function () {
 			/**
 			 * Template html url
 			 */
-			templateUrl: 'partials/directives/example.html',
+			templateUrl: 'partials/directives/major.html',
 			replace: 'true',
 			scope: {
 				/**

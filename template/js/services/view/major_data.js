@@ -3,7 +3,7 @@
 'use strict';
 
 define([], function () {
-	return ['exampleData', {
+	return ['majorData', {
 		data: {
 			search: {
 				id: 'searchInput',

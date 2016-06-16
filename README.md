@@ -1,2 +1,2 @@
-# electronTemplate
-Electron Template
+# InKrKamus 인한사전
+

@@ -11,11 +11,11 @@ define([], function() {
 	 * @param {object} exampleData - exampleData
 	 * @param {object} commonVariable - commonVariable
 	 */
-	var _controller = function ($scope, $location, $timeout, exampleData, commonVariable, formplateLoad) {
+	var _controller = function ($scope, $location, $timeout, majorData, commonVariable, formplateLoad) {
 
 		// CSS 설정
 		$scope.$emit('updateCSS', [
-			'css/example.css'
+			'css/view/major.css'
 		]);
 		/*
 		$scope.$on('$includeContentLoaded', function(event, url) {
@@ -24,7 +24,7 @@ define([], function() {
 		});
 		*/
 
-		$scope.data = exampleData.data;
+		$scope.data = majorData.data;
 
 		formplateLoad($scope);
 	};
