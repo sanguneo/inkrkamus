@@ -34,7 +34,8 @@ requirejs.config({
 		jquery: '../lib/jquery/dist/jquery.min',
 		angular: '../lib/angular/angular.min',
 		angularRoute: '../lib/angular-route/angular-route',
-		angularAnimate: '../lib/angular-animate/angular-animate'
+		angularAnimate: '../lib/angular-animate/angular-animate',
+		formplate: '../lib/formplate/js/min/formplate'
 	},
 /*
    shim:
@@ -58,6 +59,9 @@ requirejs.config({
 		},
 		routes: {
 			deps: ['angular']
+		},
+		formplate: {
+			exports: 'formplate'
 		}
 	}
 });

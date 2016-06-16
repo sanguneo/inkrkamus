@@ -13,7 +13,7 @@ define([
 			$routeProvider.when('/example', routeConfig.config('../partials/view/example/example.html', 'controllers/view/example',
 				{
 					directives: ['directives/combobox'],
-					services: ['services/view/example_data'],
+					services: ['services/view/example_data', 'services/util/formplateLoad'],
 					filters: ['filters/to_trusted', 'filters/decodeURIComponent']
 				}
 			));
