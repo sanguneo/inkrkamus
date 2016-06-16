@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/sanguneo/electronTemplate#readme",
   "dependencies": {
-    "electron-prebuilt": "^1.2.2"
+    "electron-prebuilt": "^1.2.2",
+    "sqlite3": "^3.1.4"
   }
 }
