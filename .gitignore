@@ -1,9 +1,7 @@
 .idea
 *.iml
 node_modules/*
-fixed/lib/*
-express.pid
-logs/express.log
+template/lib/*
 **/*.log
 npm-debug.log
 **/*.swp

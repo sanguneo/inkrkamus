@@ -15,7 +15,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "fixed/lib/"
+    "template/lib/"
   ],
   "dependencies": {
     "jquery": "~2.1.4",

@@ -30,7 +30,7 @@ requirejs.config({
    path는 또한 아래와 같이 특정 라이브러리 경로 선언을 위해 사용될 수 있는데, path 매핑 코드는 자동적으로 .js 확장자를 붙여서 모듈명을 매핑한다.
 */
 	paths: {
-        text: '../lib/text/text',
+    text: '../lib/text/text',
 		jquery: '../lib/jquery/dist/jquery.min',
 		angular: '../lib/angular/angular.min',
 		angularRoute: '../lib/angular-route/angular-route',

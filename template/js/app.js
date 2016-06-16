@@ -1,7 +1,6 @@
 /* global define */
 
 'use strict';
-
 // requireJS 모듈 선언 - [myApp 앵귤러 모듈]
 define(
 	[

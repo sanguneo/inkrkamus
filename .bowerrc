@@ -1,5 +1,5 @@
 {
-	"directory": "../fixed/lib/",
+	"directory": "template/lib/",
 	"analytics": false,
 	"timeout": 120000,
 	"registry": {

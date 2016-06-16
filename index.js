@@ -1,5 +1,4 @@
 'use strict';
-
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
@@ -30,7 +29,7 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/template/index.html');
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
