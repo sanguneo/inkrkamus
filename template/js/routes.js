@@ -12,8 +12,8 @@ define([
 			// Home
 			$routeProvider.when('/', routeConfig.config('../partials/view/major/major.html', 'controllers/view/major',
 				{
-					directives: ['directives/combobox'],
-					services: ['services/view/major_data', 'services/util/formplateLoad'],
+					directives: ['directives/combobox','directives/listbox'],
+					services: ['services/view/major_data', 'services/util/formplateLoad', 'services/util/mCustomScrollbarLoad'],
 					filters: ['filters/to_trusted', 'filters/decodeURIComponent']
 				}
 			));

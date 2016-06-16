@@ -1,0 +1,15 @@
+.listbox {
+    width:100%;
+    height:100%;
+}
+.listbox ul{
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+.listbox ul li{
+    border-bottom: 1px solid black;
+    height:30px;
+    line-height: 30px;
+}

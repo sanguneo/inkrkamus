@@ -35,7 +35,8 @@ requirejs.config({
 		angular: '../lib/angular/angular.min',
 		angularRoute: '../lib/angular-route/angular-route',
 		angularAnimate: '../lib/angular-animate/angular-animate',
-		formplate: '../lib/formplate/js/min/formplate'
+		formplate: '../lib/formplate/js/min/formplate',
+		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar'
 	},
 /*
    shim:
@@ -62,6 +63,10 @@ requirejs.config({
 		},
 		formplate: {
 			exports: 'formplate'
+		},
+		mCustomScrollbar: {
+			deps: ['jquery'],
+			exports: 'mCustomScrollbar'
 		}
 	}
 });

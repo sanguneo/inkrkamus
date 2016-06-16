@@ -8,6 +8,10 @@ define([], function () {
 			search: {
 				id: 'searchInput',
 				name: 'searchName'
+			},
+			vocas: {
+				id: 'vocalist',
+				name: 'vocalist'
 			}
 		}
 	}];
