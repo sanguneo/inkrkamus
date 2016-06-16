@@ -1,0 +1,34 @@
+
+#major{
+    width:100%;
+    height:100%;
+}
+.head {
+    width:100%;
+    height:50px;
+    border:1px solid black;
+}
+
+.contents {
+    width: 100%;
+    height:calc(100% - 80px);
+}
+#vocaList {
+    display:inline-block;
+    width:200px;
+    height:100%;
+    border:1px solid black;
+    box-sizing: border-box;
+}
+#result {
+    display:inline-block;
+    width:calc(100% - 200px);
+    height:100%;
+    border:1px solid black;
+    box-sizing: border-box;
+}
+.tail {
+    width:100%;
+    height:30px;
+    border:1px solid black;
+}
