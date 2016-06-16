@@ -8,7 +8,7 @@ define([/*foo/bar*/], function () {
 			templateUrl: 'partials/directives/listbox.html',
 			replace: 'true',
 			scope: {
-				data: '=lbData'
+				data: '=lData'
 			},
 			controller: ['$scope', function ($scope) {
 			}],

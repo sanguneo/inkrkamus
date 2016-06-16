@@ -9,9 +9,10 @@ define([], function () {
 				id: 'searchInput',
 				name: 'searchName'
 			},
-			vocas: {
+			vocalist: {
 				id: 'vocalist',
-				name: 'vocalist'
+				name: 'vocalist',
+				vocas: ['a','s','c','k']
 			}
 		}
 	}];
