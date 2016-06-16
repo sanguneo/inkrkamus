@@ -12,7 +12,7 @@ define([
 			// Home
 			$routeProvider.when('/example', routeConfig.config('../partials/view/example/example.html', 'controllers/view/example',
 				{
-					directives: ['directives/example'],
+					directives: ['directives/combobox'],
 					services: ['services/view/example_data'],
 					filters: ['filters/to_trusted', 'filters/decodeURIComponent']
 				}

@@ -2,9 +2,13 @@
 
 'use strict';
 
-define([], function($location) {
+define([], function () {
 	return ['exampleData', {
 		data: {
+			search: {
+				id: 'searchInput',
+				name: 'searchName'
+			}
 		}
 	}];
 });

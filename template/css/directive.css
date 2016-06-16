@@ -1,0 +1,34 @@
+.combobox {
+    width: 200px;
+}
+
+.combobox input {
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.combobox ul {
+    border: 1px solid black;
+    position
+}
+
+.combobox ul li {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    line-height: 50px;
+    border-bottom: 1px solid black;
+}
+
+.combobox ul li:last-child {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    line-height: 50px;
+    border-bottom: 0;
+}

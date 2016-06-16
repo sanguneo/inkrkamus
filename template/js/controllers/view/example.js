@@ -21,6 +21,7 @@ define([], function() {
 		$scope.$on('$locationChangeStart', function() {
 		});
 		*/
+		$scope.data = exampleData.data;
 	};
 	// 생성한 컨트롤러 리턴
 	return _controller;
