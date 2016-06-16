@@ -4,6 +4,7 @@
   "description": "Electron Template",
   "main": "index.js",
   "scripts": {
+    "install": "bower install",
     "postinstall": "sudo npm install -g electron-packager",
     "package": "electron-packager ./ --all",
     "start": "electron ."

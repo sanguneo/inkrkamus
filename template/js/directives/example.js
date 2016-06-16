@@ -33,6 +33,9 @@ define([/*foo/bar*/], function () {
 				//$scope.func = function() {
 				//   $scope.foo = 'omg';
 				//};
+				var fs = window.requireNode('fs');
+				var file = fs.readFileSync('package.json');
+				alert(file);
 			}],
 			/**
 			 * Dom Controls Usually
