@@ -28,6 +28,9 @@ define([], function() {
 
 		$scope.data = majorData.data;
 
+		new formplate({
+			selector: '.form-el'
+		});
 
 	};
 	// 생성한 컨트롤러 리턴

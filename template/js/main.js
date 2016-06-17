@@ -36,7 +36,7 @@ requirejs.config({
 		angularRoute: '../lib/angular-route/angular-route',
 		angularAnimate: '../lib/angular-animate/angular-animate',
 		formplate: '../lib/formplate/js/min/formplate',
-		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar'
+		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min'
 	},
 /*
    shim:

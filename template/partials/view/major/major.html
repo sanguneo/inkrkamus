@@ -1,13 +1,45 @@
 <!--<div ng-include="'partials/view/major/major_include.html'"></div>-->
 <div id="major">
-	<div class="head"></div>
+	<div class="head">
+		<div class="searchInput">
+			<div class="form-el">
+				<div class="input-icon">
+					<i class="fa fa-cog">&#xe601;</i>
+					<input type="text" id="text-8" placeholder="검색어를 입력하세요.">
+				</div>
+			</div>
+		</div>
+		<div class="searchType">
+			<div class="form-el">
+				<select>
+					<option value="in">인니어</option>
+					<option value="han">한국어</option>
+					<option value="eng">영어</option>
+					<option value="root">어근</option>
+				</select>
+			</div>
+		</div>
+		<div class="buttons">
+			<button class="form-bt">검색</button>
+			<button class="form-bt">종료</button>
+		</div>
+	</div>
 	<div class="contents">
 		<div id="vocaList">
 			<listbox l-data="data.vocalist"></listbox>
-		</div><!--
-		--><div id="result">
-			<div>
-
+		</div>
+		<div id="result">
+			<div class="form-el">
+				<label for="vocroot">어근</label>
+				<input type="text" id="vocroot" readonly>
+			</div>
+			<div class="form-el">
+				<label for="inEng">영어</label>
+				<input type="text" id="inEng" readonly>
+			</div>
+			<div class="form-el">
+				<label for="mean">의미</label>
+				<textarea id="mean" readonly></textarea>
 			</div>
 		</div>
 	</div>
