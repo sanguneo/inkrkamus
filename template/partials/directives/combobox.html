@@ -1,10 +1,13 @@
-<div ng-id="data.id" class="combobox">
-	<input class="text" type="text" ng-name="data.name">
-	<ul>
-		<li>a</li>
-		<li>a</li>
-		<li>a</li>
-		<li>a</li>
-		<li>a</li>
-	</ul>
+<div Id="{{data.id}}" class="combobox">
+	<div class="form-el">
+		<div class="input-icon">
+			<i class="fa fa-cog" ng-click="activate();">&#xe601;</i>
+			<input type="text" class="comboInput" name="{{data.name}}" placeholder="{{data.placeholder}}" ng-model="data.value" ng-click="activateInput();" ng-readonly="data.readonly">
+		</div>
+	</div>
+	<div class="dropdown">
+		<ul>
+			<li ng-repeat="item in data.list" ng-click="itemClick()" ng-hide="$index === data.selected">{{item}}</li>
+		</ul>
+	</div>
 </div>

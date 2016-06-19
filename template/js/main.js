@@ -36,7 +36,9 @@ requirejs.config({
 		angularRoute: '../lib/angular-route/angular-route',
 		angularAnimate: '../lib/angular-animate/angular-animate',
 		formplate: '../lib/formplate/js/min/formplate',
-		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min'
+		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min',
+		detectElementResize : '../lib/javascript-detect-element-resize/jquery.resize',
+		outside : '../ext_lib/jquery.ba-outside-events/jquery.ba-outside-events.min'
 	},
 /*
    shim:
@@ -67,6 +69,14 @@ requirejs.config({
 		mCustomScrollbar: {
 			deps: ['jquery'],
 			exports: 'mCustomScrollbar'
+		},
+		detectElementResize: {
+			deps: ['jquery'],
+			exports: 'resize'
+		},
+		outside: {
+			deps: ['jquery'],
+			exports: 'outside'
 		}
 	}
 });
