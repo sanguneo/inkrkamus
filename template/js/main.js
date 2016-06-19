@@ -38,7 +38,7 @@ requirejs.config({
 		formplate: '../lib/formplate/js/min/formplate',
 		mCustomScrollbar: '../lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min',
 		detectElementResize : '../lib/javascript-detect-element-resize/jquery.resize',
-		outside : '../ext_lib/jquery.ba-outside-events/jquery.ba-outside-events.min'
+		joutside : '../ext_lib/jquery.ba-outside-events/jquery.ba-outside-events.min'
 	},
 /*
    shim:
@@ -74,9 +74,9 @@ requirejs.config({
 			deps: ['jquery'],
 			exports: 'resize'
 		},
-		outside: {
+		joutside: {
 			deps: ['jquery'],
-			exports: 'outside'
+			exports: 'joutside'
 		}
 	}
 });

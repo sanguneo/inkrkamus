@@ -1,7 +1,7 @@
 /* global define */
 'use strict';
 
-define([/*foo/bar*/], function () {
+define(['joutside'], function () {
 	return ['combobox', function () {
 		return {
 			restrict: 'E',
@@ -12,6 +12,10 @@ define([/*foo/bar*/], function () {
 			},
 			controller: ['$scope','$element', '$timeout', function ($scope, $element, $timeout) {
 				$scope.element = $element;
+$element.bind( "clickoutside", function(event){
+	$element.find('.dropdown').slideUp();
+	$element.find('i').removeClass('active')
+});
 				var toggler = function() {
 					$element.find('.dropdown').slideToggle();
 					$element.find('i').toggleClass('active')
