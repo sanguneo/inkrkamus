@@ -20,7 +20,7 @@ button:active{
 .head {
     width:100%;
     height:50px;
-    border:1px solid black;
+    border-bottom:1px solid #d9d9d9;
     padding: 5px 3px;
 }
 .head > div {
@@ -59,19 +59,17 @@ button:active{
     display:inline-block;
     width:200px;
     height:100%;
-    border:1px solid black;
     padding: 3px;
 }
 #vocaList > div{
     width:100%;
     height:100%;
-    border:1px solid black;
 }
 #result {
     display:inline-block;
     width:calc(100% - 200px);
     height:100%;
-    border:1px solid black;
+    border-left:1px solid #d9d9d9;
     padding: 10px;
 }
 #result .form-el{
@@ -82,10 +80,11 @@ button:active{
 }
 #result .form-el textarea{
     width: calc(100% + 4px);
+    transition: inherit!important;
 }
 .tail {
     width:100%;
     height:40px;
-    border:1px solid black;
+    border-top:1px solid #d9d9d9;
     padding: 5px 3px;
 }

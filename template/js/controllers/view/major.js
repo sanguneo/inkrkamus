@@ -19,21 +19,24 @@ define(['detectElementResize'], function() {
 		formplateLoad($scope);
 		mCustomScrollbarLoad($scope);
 
-		/*
-		$scope.$on('$includeContentLoaded', function(event, url) {
-		});
-		$scope.$on('$locationChangeStart', function() {
-		});
-		*/
-
 		$scope.data = majorData.data;
 		$timeout(function () {
 			new formplate({
 				selector: '.form-el'
 			});
-		}, 10);
-
-
+			var height = 0;
+			$('#mean').parent().siblings().each(function(){
+				height += $(this).height();
+			});
+			$('#mean').parent().css({
+				height: 'calc(100% - ' + height + 'px)'
+			})
+			$('#mean').css({
+				height: 'calc(100% - ' + ($('#mean').prev().height() + 34) + 'px)',
+				marginBottom: 0,
+				transitionDuration: 0
+			});
+		});
 	};
 	// 생성한 컨트롤러 리턴
 	return _controller;
