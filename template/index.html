@@ -13,8 +13,10 @@
 
 	<!--<link href="lib/formplate/css/formplate.css" type="text/css" rel="stylesheet" />-->
 	<!--<script language="JavaScript" type="text/javascript" src="lib/formplate/js/formplate.min.js"></script>-->
+	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 	<script language="JavaScript" type="text/javascript">
 		if (window.require) {
+			window.sqlite3 = require('sqlite3').verbose();
 			window.requireNode = window.require;
 			window.require = undefined;
 		}
@@ -44,6 +46,7 @@ http://plnkr.co/edit/KzjIMN
 
 
 	<script data-main="js/main" src="lib/requirejs/require.js"></script>
+	<script>if (window.module) module = window.module;</script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-/* global requirejs */
 /*
    user strict 명령은 엄격하게 JavaScript 룰을 적용하라는 의미이다.
    일부 브라우저의 경우 use strict 명령을 통해 보다 빠르게 동작하는 경우도 존재하는 것 같다.

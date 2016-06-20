@@ -18,12 +18,19 @@ define(['detectElementResize'], function() {
 		]);
 		formplateLoad($scope);
 		mCustomScrollbarLoad($scope);
-
+		var sqlite3 = requireNode('sqlite3').verbose();
+		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 		$scope.data = majorData.data;
 
 		$scope.getVocaList = function(){
-
+			console.log(__dirname);
+			db.serialize(function() {
+  db.each("SELECT * FROM h2r", function(err, row) {
+      console.log(row);
+  });
+});
 		}
+		window.scope = $scope;
 		$scope.getVocaMean = function(){
 		}
 
