@@ -20,6 +20,13 @@ define(['detectElementResize'], function() {
 		mCustomScrollbarLoad($scope);
 
 		$scope.data = majorData.data;
+
+		$scope.getVocaList = function(){
+
+		}
+		$scope.getVocaMean = function(){
+		}
+
 		$timeout(function () {
 			new formplate({
 				selector: '.form-el'
@@ -37,6 +44,8 @@ define(['detectElementResize'], function() {
 				transitionDuration: 0
 			});
 		});
+
+
 	};
 	// 생성한 컨트롤러 리턴
 	return _controller;

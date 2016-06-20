@@ -5,19 +5,24 @@
 define([], function () {
 	return ['majorData', {
 		data: {
+			result: {
+				vocaroot: '',
+				ineng: '',
+				mean: ''
+			},
 			submit: function(){
-				if (!this.search.value|| this.search.value === '') return;
+				if (!this.search.value || this.search.value.replace(/ /g, '') === '') return;
 				if (this.search.list.indexOf(this.search.value) < 0) {
 					this.search.list.push(this.search.value);
 				}
+				alert(this.search.value);
 			},
 			search: {
 				id: 'searchInput',
 				name: 'searchName',
 				resize: true,
-				list: [1,2,3,4,5,6,7,8,9,0],
+				list: [],
 				itemClick: function() {
-					var clickedItem = this;
 					this.$parent.toggler();
 					this.$parent.data.value = this.item;
 				}
@@ -34,7 +39,10 @@ define([], function () {
 				name: 'vocalistE',
 				itemClick: function(){
 					var clickedItem = this;
-					console.log(clickedItem.voca);
+					this.$parent.$parent.data.search.value = clickedItem.voca;
+					if (this.$parent.$parent.data.search.list.indexOf(this.$parent.$parent.data.search.value) < 0) {
+						this.$parent.$parent.data.search.list.push(this.$parent.$parent.data.search.value);
+					}
 				},
 				list: [1,2,3]
 			}

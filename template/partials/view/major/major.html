@@ -14,16 +14,16 @@
 		</div>
 		<div id="result">
 			<div class="form-el">
-				<label for="vocroot">어근</label>
-				<input type="text" id="vocroot" readonly>
+				<label for="vocaroot">어근</label>
+				<input type="text" id="vocaroot" ng-model="data.result.vocaroot" readonly>
 			</div>
 			<div class="form-el">
-				<label for="inEng">영어</label>
-				<input type="text" id="inEng" readonly>
+				<label for="ineng">영어</label>
+				<input type="text" id="ineng" ng-model="data.result.ineng" readonly>
 			</div>
 			<div class="form-el">
 				<label for="mean">의미</label>
-				<textarea id="mean" readonly></textarea>
+				<textarea id="mean" readonly>{{data.result.mean}}</textarea>
 			</div>
 		</div>
 	</div>
