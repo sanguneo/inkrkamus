@@ -21,12 +21,18 @@ define(['detectElementResize'], function() {
 		var sqlite3 = requireNode('sqlite3').verbose();
 		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 		$scope.data = majorData.data;
-
-		$scope.getVocaList = function(){
-			console.log(__dirname);
+		$scope.getRomanConvert = function(){
 			db.serialize(function() {
-  db.each("SELECT * FROM h2r", function(err, row) {
-      console.log(row);
+		db.all("SELECT * FROM h2r", function(err, rows) {
+			$scope.data.h2r = rows;
+		});
+		});
+		}
+		$scope.getRomanConvert();
+		$scope.getVocaList = function(){
+			db.serialize(function() {
+  db.all("SELECT in FROM data", function(err, rows) {
+      console.log(rows);
   });
 });
 		}
