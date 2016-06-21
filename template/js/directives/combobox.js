@@ -11,45 +11,13 @@ define(['joutside'], function () {
 				data: '=cbData'
 			},
 			controller: ['$scope', '$element', '$timeout', function ($scope, $element, $timeout) {
-				$scope.element = $element;
-				$element.bind("clickoutside", function (event) {
-					$element.find('.dropdown').slideUp();
-					$element.find('i').removeClass('active')
-				});
-				var toggler = function () {
-					$element.find('.dropdown').slideToggle();
-					$element.find('i').toggleClass('active')
-				}
-				$timeout(function () {
+				$timeout(function(){
 					new formplate({
 						selector: '#' + $scope.data.id + ' > .form-el'
 					});
 				});
-				if ($scope.data.itemClick) {
-					$scope.itemClick = $scope.data.itemClick;
-				} else {
-					$scope.data.value = $scope.data.list[$scope.data.selected];
-					$scope.itemClick = function () {
-						$scope.data.selected = this.$index;
-						$scope.data.value = $scope.data.list[$scope.data.selected];
-						toggler();
-					}
-				}
 
-				$scope.toggler = toggler;
-				$scope.activate = function () {
-					inputDropDown();
-					toggler();
-				}
-				$scope.activateInput = function () {
-					if (!$scope.data.readonly && $element.find('.dropdown').css('display') !== 'none') {
-						toggler();
-					}
-					if (!$scope.data.readonly) return;
-					inputDropDown();
-					toggler();
-				}
-				var inputDropDown = function () {
+				var dropdownStyler = function () {
 					var InputForm = $element.find('input')[0].getBoundingClientRect();
 					$element.find('.dropdown').css({
 						top: (InputForm.top + InputForm.height) + 'px',
@@ -58,13 +26,50 @@ define(['joutside'], function () {
 						height: ((($scope.data.list.length - ($scope.data.readonly ? 1 : 0)) * 25) < 200 ? (($scope.data.list.length - ($scope.data.readonly ? 1 : 0)) * 25 + 1) : 200) + 'px'
 					})
 				};
+				$scope.toggler = function () {
+					$element.find('.dropdown').slideToggle();
+					$element.find('i').toggleClass('active')
+				};
+
+
+
+				$element.bind("clickoutside", function (event) {
+					$element.find('.dropdown').slideUp();
+					$element.find('i').removeClass('active')
+				});
+
+
+				if ($scope.data.itemClick) {
+					$scope.itemClick = $scope.data.itemClick;
+				} else {
+					$scope.data.value = $scope.data.list[$scope.data.selected];
+					$scope.itemClick = function () {
+						$scope.data.selected = this.$index;
+						$scope.data.value = $scope.data.list[$scope.data.selected];
+						$scope.toggler();
+					}
+				}
+
+				$scope.activate = function () {
+					dropdownStyler();
+					$scope.toggler();
+				};
+				$scope.activateInput = function () {
+					if (!$scope.data.readonly && $element.find('.dropdown').css('display') !== 'none') {
+						$scope.toggler();
+					}
+					if (!$scope.data.readonly) return;
+					dropdownStyler();
+					$scope.toggler();
+				};
+
 				if ($scope.data.resize) {
 					$element.children('.form-el').resize(function () {
-						inputDropDown();
+						dropdownStyler();
 					});
 				} else {
 					$(window).resize(function () {
-						inputDropDown();
+						dropdownStyler();
 					});
 				}
 			}],

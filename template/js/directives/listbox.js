@@ -14,7 +14,6 @@ define([], function () {
 				$scope.itemClick = $scope.data.itemClick;
 			}],
 			link: function (/* scope (can be used.) */) {
-				// $('#example').fadeIn(300);
 			}
 		};
 	}];

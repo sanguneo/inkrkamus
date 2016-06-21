@@ -12,37 +12,23 @@ define(['detectElementResize'], function () {
 	 * @param {object} commonVariable - commonVariable
 	 */
 	var _controller = function ($scope, $location, $timeout, majorData, commonVariable) {
-		// CSS 설정
+
+		var sqlite3 = requireNode('sqlite3').verbose();
+		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
+
+		new formplate({ selector: '.form-el'});
+
 		$scope.$emit('updateCSS', [
 			'css/view/major.css'
 		]);
 
-		var sqlite3 = requireNode('sqlite3').verbose();
-		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 		$scope.data = majorData.data;
 
-		$timeout(function(){
-			(function getRomanConvert() {
-				db.each("SELECT * FROM h2r", function (err, row) {
-					$scope.data.h2r[row.han] = row.rom;
-				});
-			})();
-			$('li').click(function(){
-				console.log($(this).text());
-			})
-		});
-
-		window.scope = $scope;
-		$scope.getVocaMean = function () {
-			db.each("SELECT `in` FROM data", function (err, row) {
-				console.log(row);
-			});
-		};
+		$timeout(function () {
+			$scope.include = 'partials/view/major/major_include.html';
+		},1000);
 
 		$timeout(function () {
-			new formplate({
-				selector: '.form-el'
-			});
 			var height = 0;
 			$('#mean').parent().siblings().each(function () {
 				height += $(this).height();
@@ -55,13 +41,31 @@ define(['detectElementResize'], function () {
 				marginBottom: 0,
 				transitionDuration: 0
 			});
+			$('#result').css({transition: 'all 1s'});
 		});
+
+		$scope.getVocaMean = function () {};
+
 		$scope.listclick = function($event){
 			$scope.data.search.value = $event.target.innerText;
 			if ($scope.data.search.list.indexOf($scope.data.search.value) < 0) {
 				$scope.data.search.list.push($scope.data.search.value);
 			}
 		};
+
+		$scope.$on('$includeContentLoaded', function(){
+			$timeout(function(){
+				$('#result').addClass('opened');
+			});
+			$timeout(function(){
+				(function getRomanConvert() {
+					db.each("SELECT * FROM h2r", function (err, row) {
+						$scope.data.h2r[row.han] = row.rom;
+					});
+				})();
+			},100);
+		});
+
 		window.addEventListener("beforeunload", function(e){
 			db.close();
 		}, false);
