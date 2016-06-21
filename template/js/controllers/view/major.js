@@ -45,21 +45,59 @@ define(['detectElementResize'], function () {
 		});
 
 		window.scope = $scope;
+		$scope.data.$parent = window.scope;
+		$scope.data.search.$parent = $scope.data;
+		window.scope = undefined;
+		delete window.scope;
 
 		$scope.getVocaMean = function (input, type) {
-			db.each("SELECT `rt`,`en`,`kr` FROM data where `in`=\"" + input + "\";", function (err, rows) {
-				console.log(rows);
+			var sqlPostfix = "";
+			switch(type) {
+			case 'id' :
+				sqlPostfix = "`ID`=\"" + input + "\";"
+				break;
+			case 'in' :
+				sqlPostfix = "`in`=\"" + input + "\";"
+				break;
+			case 'en' :
+				break;
+			case 'kr' :
+				break
+			case 'rt' :
+				break
+			default :
+				break;
+			}
+			db.each("SELECT `rt`,`en`,`kr` FROM data where " + sqlPostfix, function (err, rows) {
+				console.log(rows.kr.replace('/♬/gi','\\n'))
+				$scope.data.result = rows;
+				$scope.data.result.kr = $scope.data.result.kr.replace('/\♬/g','\n');
 			});
 		};
+
+		var vocaLength = 0;
 		var offset = 0;
-		var getVocaList = function getVocaList(limit) {
+		var getVocaList;
+		getVocaList = function getVocaList(limit) {
 			var sql = 'SELECT `ID`, `in` from data limit ' + limit + ' offset ' + offset + ' ;';
 			offset += limit;
 			db.each(sql, function (err, row) {
 				$scope.data.vocalist.list.push(row);
 			});
+			$timeout(function(){
+				$scope.$apply();
+				if(vocaLength > offset){
+					getVocaList(limit);
+				}
+			}, 25);
 		};
-		getVocaList(500);
+		db.get("SELECT COALESCE(MAX(id)+1, 0) as count FROM data", function (err, row) {
+			vocaLength = parseInt(row.count);
+			getVocaList(25);
+		});
+
+
+
 		$scope.$on('$includeContentLoaded', function(){
 			$timeout(function(){
 				$('#result').addClass('opened');

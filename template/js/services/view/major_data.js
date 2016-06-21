@@ -8,7 +8,7 @@ define([], function () {
 			result: {
 				rt: '',
 				en: '',
-				mean: ''
+				kr: ''
 			},
 			h2r:{
 			},
@@ -17,7 +17,7 @@ define([], function () {
 				if (this.search.list.indexOf(this.search.value) < 0) {
 					this.search.list.push(this.search.value);
 				}
-				alert(this.search.value);
+				this.$parent.getVocaMean(this.search.value, 'in');
 			},
 			search: {
 				id: 'searchInput',
@@ -27,6 +27,11 @@ define([], function () {
 				itemClick: function() {
 					this.$parent.toggler();
 					this.$parent.data.value = this.item;
+				},
+				keypress: function($event){
+					if ($event.keyCode === 13) {
+						this.$parent.submit()
+					}
 				}
 			},
 			type: {
@@ -40,11 +45,11 @@ define([], function () {
 				id: 'vocalistE',
 				name: 'vocalistE',
 				itemClick: function(){
-					var clickedItem = this;
-					this.$parent.$parent.data.search.value = clickedItem.item[this.$parent.data.index];
+					this.$parent.$parent.data.search.value = this.item[this.$parent.data.index];
 					if (this.$parent.$parent.data.search.list.indexOf(this.$parent.$parent.data.search.value) < 0) {
 						this.$parent.$parent.data.search.list.push(this.$parent.$parent.data.search.value);
 					}
+					this.$parent.$parent.getVocaMean(this.item.ID, 'id');
 				},
 				index: 'in',
 				list: []
