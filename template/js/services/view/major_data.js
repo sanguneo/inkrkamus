@@ -52,7 +52,9 @@ define([], function () {
 					this.$parent.$parent.getVocaMean(this.item.ID, 'id');
 				},
 				index: 'in',
-				list: []
+				list: [],
+				allList: [],
+				specList: []
 			}
 		}
 	}];
