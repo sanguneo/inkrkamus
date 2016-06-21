@@ -1,5 +1,5 @@
-<div id="{{data.id}}" class="listbox">
+<div id="{{data.id}}" class="listbox" data="{{data.index}}">
 	<ul>
-		<li ng-repeat="voca in data.list" ng-click="itemClick()">{{voca}}</li>
+		<li ng-repeat="item in data.list" ng-click="itemClick()">{{item[data.index]}}</li>
 	</ul>
 </div>

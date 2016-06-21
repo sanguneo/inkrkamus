@@ -10,6 +10,9 @@ define([], function () {
 				ineng: '',
 				mean: ''
 			},
+			h2r:{
+
+			},
 			submit: function(){
 				if (!this.search.value || this.search.value.replace(/ /g, '') === '') return;
 				if (this.search.list.indexOf(this.search.value) < 0) {
@@ -39,12 +42,13 @@ define([], function () {
 				name: 'vocalistE',
 				itemClick: function(){
 					var clickedItem = this;
-					this.$parent.$parent.data.search.value = clickedItem.voca;
+					this.$parent.$parent.data.search.value = clickedItem.item[this.$parent.data.index];
 					if (this.$parent.$parent.data.search.list.indexOf(this.$parent.$parent.data.search.value) < 0) {
 						this.$parent.$parent.data.search.list.push(this.$parent.$parent.data.search.value);
 					}
 				},
-				list: [1,2,3]
+				index: 'in',
+				list: []
 			}
 		}
 	}];

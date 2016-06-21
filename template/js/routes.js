@@ -13,7 +13,7 @@ define([
 			$routeProvider.when('/', routeConfig.config('../partials/view/major/major.html', 'controllers/view/major',
 				{
 					directives: ['directives/combobox','directives/listbox'],
-					services: ['services/view/major_data', 'services/util/formplateLoad', 'services/util/mCustomScrollbarLoad'],
+					services: ['services/view/major_data'],
 					filters: ['filters/to_trusted', 'filters/decodeURIComponent']
 				}
 			));
