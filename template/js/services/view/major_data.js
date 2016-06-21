@@ -6,12 +6,11 @@ define([], function () {
 	return ['majorData', {
 		data: {
 			result: {
-				vocaroot: '',
-				ineng: '',
+				rt: '',
+				en: '',
 				mean: ''
 			},
 			h2r:{
-
 			},
 			submit: function(){
 				if (!this.search.value || this.search.value.replace(/ /g, '') === '') return;

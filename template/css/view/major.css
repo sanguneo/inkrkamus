@@ -63,11 +63,6 @@ button:active{
     width:100%;
     height:100%;
 }
-#vocaList li{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
 #result {
     position:absolute;
     top:50px;

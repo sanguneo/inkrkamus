@@ -51,17 +51,18 @@ define(['detectElementResize'], function () {
 				console.log(rows);
 			});
 		};
-
+		var offset = 0;
+		var getVocaList = function getVocaList(limit) {
+			var sql = 'SELECT `ID`, `in` from data limit ' + limit + ' offset ' + offset + ' ;';
+			offset += limit;
+			db.each(sql, function (err, row) {
+				$scope.data.vocalist.list.push(row);
+			});
+		};
+		getVocaList(500);
 		$scope.$on('$includeContentLoaded', function(){
 			$timeout(function(){
 				$('#result').addClass('opened');
-				$('#vocaListE > ul li').click(function(){
-					$scope.data.search.value = $(this).text();
-					if ($scope.data.search.list.indexOf($scope.data.search.value) < 0) {
-						$scope.data.search.list.push($scope.data.search.value);
-					}
-					$scope.$apply();
-				});
 			});
 			$timeout(function(){
 				(function getRomanConvert() {
