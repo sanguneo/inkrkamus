@@ -44,18 +44,24 @@ define(['detectElementResize'], function () {
 			$('#result').css({transition: 'all 1s'});
 		});
 
-		$scope.getVocaMean = function () {};
+		window.scope = $scope;
 
-		$scope.listclick = function($event){
-			$scope.data.search.value = $event.target.innerText;
-			if ($scope.data.search.list.indexOf($scope.data.search.value) < 0) {
-				$scope.data.search.list.push($scope.data.search.value);
-			}
+		$scope.getVocaMean = function (input, type) {
+			db.each("SELECT `rt`,`en`,`kr` FROM data where `in`=\"" + input + "\";", function (err, rows) {
+				console.log(rows);
+			});
 		};
 
 		$scope.$on('$includeContentLoaded', function(){
 			$timeout(function(){
 				$('#result').addClass('opened');
+				$('#vocaListE > ul li').click(function(){
+					$scope.data.search.value = $(this).text();
+					if ($scope.data.search.list.indexOf($scope.data.search.value) < 0) {
+						$scope.data.search.list.push($scope.data.search.value);
+					}
+					$scope.$apply();
+				});
 			});
 			$timeout(function(){
 				(function getRomanConvert() {
