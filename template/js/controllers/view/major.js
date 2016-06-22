@@ -131,6 +131,10 @@ define(['detectElementResize'], function () {
 			}
 			db.each("SELECT `rt`,`en`,`kr` FROM data where " + sqlPostfix, function (err, row) {
 				$scope.data.result = row;
+			},function(err, rows){
+				if (rows <= 0) {
+					alert('겁색결과가 없습니다.');
+				}
 			});
 		};
 
@@ -154,11 +158,17 @@ define(['detectElementResize'], function () {
 			}
 		};
 		$scope.romanize = function(){
-			var romanized = '';
-			for (var i = 0; i < $scope.data.result.kr.length; i++) {
-				romanized += $scope.data.h2r[$scope.data.result.kr[i]] || $scope.data.result.kr[i];
+			if ($scope.data.result.temporary && $scope.data.result.temporary !== '') {
+				$scope.data.result.kr = $scope.data.result.temporary;
+				$scope.data.result.temporary = undefined;
+			}else {
+				var romanized = '';
+				for (var i = 0; i < $scope.data.result.kr.length; i++) {
+					romanized += $scope.data.h2r[$scope.data.result.kr[i]] || $scope.data.result.kr[i];
+				}
+				$scope.data.result.temporary = $scope.data.result.kr;
+				$scope.data.result.kr = romanized;
 			}
-			console.log(romanized);
 		};
 
 		window.addEventListener("beforeunload", function(e){

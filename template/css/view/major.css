@@ -9,13 +9,20 @@ button {
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     background-clip: padding-box;
+    white-space: normal;
 }
 button:active{
     background-color: #3390d1;
 }
+
 #major{
     width:100%;
     height:100%;
+}
+.buttons {
+    text-align: justify;
+    vertical-align: top;
+    white-space: nowrap;
 }
 .head {
     width:100%;
@@ -36,27 +43,21 @@ button:active{
 }
 .head > .buttons {
     width:calc(60% - 209px);
-    text-align: justify;
-    vertical-align: top;
-    white-space: nowrap;
 }
-.head > .buttons button{
-  white-space: normal;
-}
-.head > .buttons .form-bt {
+.buttons .form-bt {
     display: inline-block;
     width: calc(50% - 2px);
     height: 38px;
 }
 .contents {
     width: 100%;
-    height:calc(100% - 90px);
+    height:calc(100% - 110px);
 }
 #vocaList {
     position:absolute;
     top:50px;
     width:200px;
-    height:calc(100% - 90px);
+    height:calc(100% - 110px);
     padding: 3px;
 }
 #vocaList > div{
@@ -68,7 +69,7 @@ button:active{
     top:50px;
     right:0px;
     width:100%;
-    height:calc(100% - 90px);
+    height:calc(100% - 110px);
     border-left:1px solid #d9d9d9;
     padding: 10px;
     background-color: white;
@@ -88,9 +89,31 @@ button:active{
 }
 .tail {
     position:absolute;
+    display:inline-block;
     bottom:0;
     width:100%;
-    height:40px;
+    height:60px;
     border-top:1px solid #d9d9d9;
     padding: 5px 3px;
+}
+.tail > div {
+    height:100%;
+    display:inline-block;
+}
+.tail > #information {
+    height:100%;
+    width:200px;
+}
+.tail > #else {
+    height:100%;
+    width:calc(100% - 410px);
+}
+.tail > #romanizer {
+    height:100%;
+    width:200px;
+}
+.tail > div .form-bt {
+    display: inline-block;
+    width: calc(100% - 2px);
+    height: 48px;
 }
