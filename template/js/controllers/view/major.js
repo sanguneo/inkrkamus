@@ -230,6 +230,7 @@ define(['detectElementResize'], function () {
 		window.addEventListener("beforeunload", function(e){
 			db.close();
 		}, false);
+
 	};
 	// 생성한 컨트롤러 리턴
 	return _controller;

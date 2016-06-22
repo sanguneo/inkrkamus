@@ -1,7 +1,7 @@
 {
-  "name": "eltrtemplate",
-  "version": "1.0.0",
-  "description": "Electron Template",
+  "name": "InKrKamus",
+  "version": "2.0.0",
+  "description": "InKrKamus v2.0 Indonesian-Korean Dictionary",
   "main": "index.js",
   "scripts": {
     "install": "bower install",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanguneo/electronTemplate.git"
+    "url": "git+https://sanguneo@bitbucket.org/sanguneo/inkrkamus.git"
   },
   "keywords": [
     "electron",
@@ -20,11 +20,13 @@
   "author": "sanguneo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sanguneo/electronTemplate/issues"
+    "url": "http://blog.sanguneo.com"
   },
-  "homepage": "https://github.com/sanguneo/electronTemplate#readme",
+  "homepage": "http://blog.sanguneo.com",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.2"
+  },
   "dependencies": {
-    "electron-prebuilt": "^1.2.2",
     "sqlite3": "^3.1.4"
   }
 }
