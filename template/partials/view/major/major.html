@@ -13,15 +13,15 @@
 		<div id="result">
 			<div class="form-el">
 				<label for="vocaroot">어근</label>
-				<input type="text" id="vocaroot" ng-model="data.result.rt" readonly>
+				<input type="text" id="vocaroot" ng-model="data.result.rt" ng-keyup="ignore($event)" ng-keydown="ignore($event)">
 			</div>
 			<div class="form-el">
 				<label for="ineng">영어</label>
-				<input type="text" id="ineng" ng-model="data.result.en" readonly>
+				<input type="text" id="ineng" ng-model="data.result.en" ng-keyup="ignore($event)" ng-keydown="ignore($event)">
 			</div>
 			<div class="form-el">
-				<label for="mean">의미</label>
-				<textarea id="mean" readonly>{{data.result.kr}}</textarea>
+				<label for="mean">의미<i class="clipboard"></i></label>
+				<textarea id="mean" ng-keyup="ignore($event)" ng-keydown="ignore($event)">{{data.result.kr}}</textarea>
 			</div>
 		</div>
 	</div>

@@ -31,8 +31,6 @@ define(['joutside'], function () {
 					$element.find('i').toggleClass('active')
 				};
 
-
-
 				$element.bind("clickoutside", function (event) {
 					$element.find('.dropdown').slideUp();
 					$element.find('i').removeClass('active')

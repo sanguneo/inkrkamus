@@ -13,6 +13,7 @@ define(['detectElementResize'], function () {
 	 */
 	var _controller = function ($scope, $location, $timeout, majorData, commonVariable) {
 
+
 		var sqlite3 = requireNode('sqlite3').verbose();
 		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 
@@ -24,6 +25,13 @@ define(['detectElementResize'], function () {
 
 		$scope.data = majorData.data;
 
+		{
+			window.scope = $scope;
+			$scope.data.$parent = window.scope;
+			$scope.data.search.$parent = $scope.data;
+			window.scope = undefined;
+			delete window.scope;
+		}
 		$timeout(function () {
 			$scope.include = 'partials/view/major/major_include.html';
 		},1000);
@@ -44,11 +52,7 @@ define(['detectElementResize'], function () {
 			$('#result').css({transition: 'all 1s'});
 		});
 
-		window.scope = $scope;
-		$scope.data.$parent = window.scope;
-		$scope.data.search.$parent = $scope.data;
-		window.scope = undefined;
-		delete window.scope;
+
 
 		/*--[ begin initialVocaList ]--*/
 		var vocaLength = 0;
@@ -69,6 +73,7 @@ define(['detectElementResize'], function () {
 		};
 
 		db.get("SELECT COALESCE(MAX(id)+1, 0) as count FROM data", function (err, row) {
+			$scope.data.vocalist.list = undefined;
 			$scope.data.vocalist.list = $scope.data.vocalist.allList;
 			vocaLength = parseInt(row.count);
 			initialVocaList(50);
@@ -78,46 +83,54 @@ define(['detectElementResize'], function () {
 		/*--[ begin getVocaList ]--*/
 		var getVocaList = function getVocaList(sqlPostfix) {
 			$scope.data.vocalist.list = undefined;
+			$scope.data.vocalist.specList = [];
 			$scope.data.vocalist.list = $scope.data.vocalist.specList;
 			var sql = 'SELECT `ID`, `in` from data where ' + sqlPostfix + ';';
 			db.each(sql, function (err, row) {
 				$scope.data.vocalist.specList.push(row);
 			});
+			$timeout(function(){
+				$scope.$apply();
+			});
 		};
+
 		/*--[ end getVocaList ]--*/
 
 		$scope.getVocaMean = function (input, type) {
+			$scope.data.result = {
+				rt: '',
+				en: '',
+				kr: ''
+			};
 			var sqlPostfix = "";
 			switch(type) {
 			case 'id' :
-				sqlPostfix = "`ID`=\"" + input + "\";"
+				sqlPostfix = "`ID`=\"" + input + "\";";
 				break;
 			case 'in' :
-				sqlPostfix = "`in`=\"" + input + "\";"
+				sqlPostfix = "`in`=\"" + input + "\";";
 				break;
 			case 'en' :
-				sqlPostfix = "`in`=\"" + input + "\";"
+				sqlPostfix = "`en` LIKE \"" + input + "\" or `en` LIKE \"" + input + ", %%\" or `en` LIKE \"%% " + input + ",\" or `en` LIKE \"%% " + input + ",%%\" or `en` LIKE \"%% " + input + "\";";
 				getVocaList(sqlPostfix);
 				return;
 				break;
 			case 'kr' :
-				sqlPostfix = "`in`=\"" + input + "\";"
+				sqlPostfix = "`kr` LIKE \"%%" + input + "%%\";";
 				getVocaList(sqlPostfix);
 				return;
-				break
+				break;
 			case 'rt' :
-				sqlPostfix = "`in`=\"" + input + "\";"
+				sqlPostfix = "`rt` LIKE \"" + input + "\" or `rt` LIKE \"" + input + ", %%\" or `rt` LIKE \"%% " + input + ",\" or `rt` LIKE \"%% " + input + ",%%\" or `rt` LIKE \"%% " + input + "\";";
 				getVocaList(sqlPostfix);
 				return;
-				break
+				break;
 			default :
 				return;
 				break;
 			}
-			db.each("SELECT `rt`,`en`,`kr` FROM data where " + sqlPostfix, function (err, rows) {
-				console.log(rows.kr.replace('/♬/gi','\\n'))
-				$scope.data.result = rows;
-				$scope.data.result.kr = $scope.data.result.kr.replace('/\♬/g','\n');
+			db.each("SELECT `rt`,`en`,`kr` FROM data where " + sqlPostfix, function (err, row) {
+				$scope.data.result = row;
 			});
 		};
 
@@ -125,14 +138,21 @@ define(['detectElementResize'], function () {
 			$timeout(function(){
 				$('#result').addClass('opened');
 			});
-			$timeout(function(){
-				(function getRomanConvert() {
-					db.each("SELECT * FROM h2r", function (err, row) {
-						$scope.data.h2r[row.han] = row.rom;
-					});
-				})();
-			},100);
+			(function getRomanConvert() {
+				db.all("SELECT * FROM h2r", function (err, rows) {
+					$scope.data.h2r = rows;
+				});
+			})();
 		});
+		$scope.ignore = function(event){
+			if ((event.keyCode === 45 && event.ctrlKey === true) ||
+				(event.keyCode === 67 && event.ctrlKey === true)) {
+			} else if (event.keyCode === 65 && event.ctrlKey === true){
+				event.target.setSelectionRange(0, event.target.value.length);
+			} else {
+				event.preventDefault();
+			}
+		};
 
 		window.addEventListener("beforeunload", function(e){
 			db.close();

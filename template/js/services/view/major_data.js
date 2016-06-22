@@ -17,7 +17,23 @@ define([], function () {
 				if (this.search.list.indexOf(this.search.value) < 0) {
 					this.search.list.push(this.search.value);
 				}
-				this.$parent.getVocaMean(this.search.value, 'in');
+				var type = "in";
+				switch(this.$parent.data.type.selected) {
+				case 1 :
+					type = 'kr';
+					break;
+				case 2 :
+					type = 'en';
+					break;
+				case 3 :
+					type = 'rt';
+					break;
+				case 0 :
+				default :
+					break;
+				}
+				console.log(type);
+				this.$parent.getVocaMean(this.search.value, type);
 			},
 			search: {
 				id: 'searchInput',
@@ -45,10 +61,6 @@ define([], function () {
 				id: 'vocalistE',
 				name: 'vocalistE',
 				itemClick: function(){
-					this.$parent.$parent.data.search.value = this.item[this.$parent.data.index];
-					if (this.$parent.$parent.data.search.list.indexOf(this.$parent.$parent.data.search.value) < 0) {
-						this.$parent.$parent.data.search.list.push(this.$parent.$parent.data.search.value);
-					}
 					this.$parent.$parent.getVocaMean(this.item.ID, 'id');
 				},
 				index: 'in',
