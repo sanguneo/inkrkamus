@@ -45,6 +45,46 @@ define(['detectElementResize'], function () {
 			});
 			$('#result').css({transition: 'all 1s'});
 			$('#fog').css({transition: 'opacity 1s'});
+			$('#searchType .dropdown li').click(function(e){
+				$scope.data.result = {rt: '', en: '', kr: ''};
+				if (e.target.innerText === '한국어') {
+					$scope.data.result.kr = $scope.data.resultKrDefault + '';
+				}
+			});
+
+			$('#searchType input').on('keydown', function(event){
+				if (event.keyCode === 40) {
+					var lis = $(this).parent().parent().next().find('li');
+					var i=0;
+					for (i=0; i <lis.length;i++){
+						if(lis[i].innerText === this.value) break;
+					}
+					if (i === lis.length - 1) return;
+					$scope.data.type.value = lis[i+1].innerText;
+					$scope.data.type.selected = i+1;
+					$scope.data.result = {rt: '', en: '', kr: ''};
+					if ($scope.data.type.value === '한국어') {
+						$scope.data.result.kr = $scope.data.resultKrDefault + '';
+					}
+					$scope.$apply();
+				} else if (event.keyCode === 38) {
+					var lis = $(this).parent().parent().next().find('li');
+					var i=0;
+					for (i=0; i <lis.length;i++){
+						if(lis[i].innerText === this.value) break;
+					}
+					if (i === 0) return;
+					$scope.data.type.value = lis[i-1].innerText;
+					$scope.data.result = {rt: '', en: '', kr: ''};
+					$scope.data.type.selected = i-1;
+					$scope.data.result = {rt: '', en: '', kr: ''};
+					if ($scope.data.type.value === '한국어') {
+						$scope.data.result.kr = $scope.data.resultKrDefault + '';
+					}
+					$scope.$apply();
+
+				}
+			})
 		});
 
 		/*--[ begin initialVocaList ]--*/
