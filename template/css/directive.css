@@ -23,6 +23,11 @@
     background-color: #34a5e7;
     color: white;
 }
+.listbox ul li.active{
+    background-color: #34a5e7;
+    color: white;
+    font-weight: bold;
+}
 .listbox ul li:last-child{
     border-bottom: 0;
     height:25px;

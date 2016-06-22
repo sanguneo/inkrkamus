@@ -59,8 +59,12 @@ define([], function () {
 			vocalist: {
 				id: 'vocalistE',
 				name: 'vocalistE',
-				itemClick: function(){
+				itemClick: function($event){
 					this.$parent.$parent.getVocaMean(this.item.ID, 'id');
+					if(this.$parent.$parent.data.vocalist.active)
+						this.$parent.$parent.data.vocalist.active.removeClass('active');
+					this.$parent.$parent.data.vocalist.active = $($event.target);
+					this.$parent.$parent.data.vocalist.active.toggleClass('active');
 				},
 				index: 'in',
 				list: [],

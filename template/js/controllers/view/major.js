@@ -12,8 +12,6 @@ define(['detectElementResize'], function () {
 	 * @param {object} commonVariable - commonVariable
 	 */
 	var _controller = function ($scope, $location, $timeout, majorData, commonVariable) {
-
-
 		var sqlite3 = window.requireNode.sqlite3.verbose();
 		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 
@@ -33,10 +31,6 @@ define(['detectElementResize'], function () {
 			delete window.scope;
 		}
 		$timeout(function () {
-			$scope.include = 'partials/view/major/major_include.html';
-		},1000);
-
-		$timeout(function () {
 			var height = 0;
 			$('#mean').parent().siblings().each(function () {
 				height += $(this).height();
@@ -50,9 +44,8 @@ define(['detectElementResize'], function () {
 				transitionDuration: 0
 			});
 			$('#result').css({transition: 'all 1s'});
+			$('#fog').css({transition: 'opacity 1s'});
 		});
-
-
 
 		/*--[ begin initialVocaList ]--*/
 		var vocaLength = 0;
@@ -157,6 +150,23 @@ define(['detectElementResize'], function () {
 				event.preventDefault();
 			}
 		};
+		$scope.information = function(){
+			$('#fog').animate({opacity:1}, {
+				duration: 500, start: function() {
+					$('#fog').css({
+						display:'block'
+					});
+				}
+			});
+			$('#fog > #informationDialog').toggleClass('opened');
+		};
+		$scope.closeInfoDialog = function(){
+			$('#fog').css({
+				opacity: 0,
+				display: 'none'
+			});
+			$('#fog > #informationDialog').toggleClass('opened');
+		};
 		$scope.romanize = function(){
 			if ($scope.data.result.temporary && $scope.data.result.temporary !== '') {
 				$scope.data.result.kr = $scope.data.result.temporary;
@@ -170,7 +180,10 @@ define(['detectElementResize'], function () {
 				$scope.data.result.kr = romanized;
 			}
 		};
-
+		$scope.close = function(){
+			vocaLength = -1;
+			window.close();
+		};
 		window.addEventListener("beforeunload", function(e){
 			db.close();
 		}, false);
