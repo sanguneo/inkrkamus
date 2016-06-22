@@ -220,6 +220,9 @@ define(['detectElementResize'], function () {
 				$scope.data.result.kr = romanized;
 			}
 		};
+		$scope.donation = function(href){
+			window.requireNode.shell.openExternal(href);
+		};
 		$scope.close = function(){
 			vocaLength = -1;
 			window.close();

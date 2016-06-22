@@ -1,4 +1,10 @@
+a {
+    cursor:pointer;
+    color:gray;
+    font-weight: bold;
+}
 button {
+    cursor:pointer;
     color: white;
     font-size: 0.875rem;
     background-color: #34a5e7;

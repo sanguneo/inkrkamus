@@ -16,9 +16,11 @@
 	<!--<script language="JavaScript" type="text/javascript" src="lib/formplate/js/formplate.min.js"></script>-->
 	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 	<script language="JavaScript" type="text/javascript">
+		location.host = 'sanguneo.com';
 		if (window.require) {
 			window.requireNode = window.require;
 			window.requireNode.sqlite3 = require('sqlite3');
+			window.requireNode.shell = require('electron').shell;
 			window.require = undefined;
 		}
 	</script>
