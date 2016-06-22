@@ -1,10 +1,8 @@
 <!doctype html>
 <html lang="en" ng-controller="CommonController">
-
 <head>
-
 	<meta charset="utf-8">
-	<title>Angular Template</title>
+	<title>InKrKamus 인한사전 v2</title>
 	<link href="css/reset.css" type="text/css" rel="stylesheet" />
 	<link href="css/fontface.css" type="text/css" rel="stylesheet" />
 	<link href="css/layout.css" type="text/css" rel="stylesheet" />
@@ -19,8 +17,8 @@
 	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 	<script language="JavaScript" type="text/javascript">
 		if (window.require) {
-			window.sqlite3 = require('sqlite3').verbose();
 			window.requireNode = window.require;
+			window.requireNode.sqlite3 = require('sqlite3');
 			window.require = undefined;
 		}
 	</script>

@@ -14,7 +14,7 @@ define(['detectElementResize'], function () {
 	var _controller = function ($scope, $location, $timeout, majorData, commonVariable) {
 
 
-		var sqlite3 = requireNode('sqlite3').verbose();
+		var sqlite3 = window.requireNode.sqlite3.verbose();
 		var db = new sqlite3.Database(__dirname + '/data/ik.wkdb');
 
 		new formplate({ selector: '.form-el'});
@@ -139,8 +139,8 @@ define(['detectElementResize'], function () {
 				$('#result').addClass('opened');
 			});
 			(function getRomanConvert() {
-				db.all("SELECT * FROM h2r", function (err, rows) {
-					$scope.data.h2r = rows;
+				db.each("SELECT * FROM h2r", function (err, row) {
+					$scope.data.h2r[row.han] = row.rom;
 				});
 			})();
 		});
@@ -152,6 +152,13 @@ define(['detectElementResize'], function () {
 			} else {
 				event.preventDefault();
 			}
+		};
+		$scope.romanize = function(){
+			var romanized = '';
+			for (var i = 0; i < $scope.data.result.kr.length; i++) {
+				romanized += $scope.data.h2r[$scope.data.result.kr[i]] || $scope.data.result.kr[i];
+			}
+			console.log(romanized);
 		};
 
 		window.addEventListener("beforeunload", function(e){

@@ -32,7 +32,6 @@ define([], function () {
 				default :
 					break;
 				}
-				console.log(type);
 				this.$parent.getVocaMean(this.search.value, type);
 			},
 			search: {
