@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 platform=$1
 arch=$2
+echo Win32용 sqlite3는 따로 빌드해야함.
 if [ "$platform" = "" ]; then
 	echo usage $0 \<platform\> \<arch\>
     exit;
