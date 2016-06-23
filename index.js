@@ -20,7 +20,7 @@ app.on('window-all-closed', function () {
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + '/template/img/favicon.png'});
+	mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + '/template/img/inkrkamusicon.png'});
 
 	// Hide Menu bar
 	mainWindow.setMenu(null);
