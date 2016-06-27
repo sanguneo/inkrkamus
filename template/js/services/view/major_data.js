@@ -77,6 +77,10 @@ define([], function () {
 						this.$parent.$parent.data.vocalist.active.removeClass('active');
 					this.$parent.$parent.data.vocalist.active = $($event.target);
 					this.$parent.$parent.data.vocalist.active.toggleClass('active');
+					var self = this;
+					setTimeout(function(){
+						self.$parent.$parent.$apply();
+					},0);
 				},
 				index: 'in',
 				list: [],
