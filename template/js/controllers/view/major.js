@@ -109,7 +109,7 @@ define(['detectElementResize'], function () {
 			$scope.data.vocalist.list = undefined;
 			$scope.data.vocalist.list = $scope.data.vocalist.allList;
 			vocaLength = parseInt(row.count);
-			initialVocaList(50);
+			initialVocaList(25);
 		});
 		/*--[ end initialVocaList ]--*/
 
@@ -174,13 +174,18 @@ define(['detectElementResize'], function () {
 		$scope.$on('$includeContentLoaded', function(){
 			$timeout(function(){
 				$('#result').addClass('opened');
+				
 			});
 			(function getRomanConvert() {
 				db.each("SELECT * FROM h2r", function (err, row) {
 					$scope.data.h2r[row.han] = row.rom;
 				});
 			})();
+			
 		});
+		$timeout(function(){
+			$('#else > iframe').animate({width:'100%', height:'100%',marginLeft:0});
+		},1000);
 		$scope.ignore = function(event){
 			if ((event.keyCode === 45 && event.ctrlKey === true) ||
 				(event.keyCode === 67 && event.ctrlKey === true)) {

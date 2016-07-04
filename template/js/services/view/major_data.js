@@ -80,6 +80,7 @@ define([], function () {
 					var self = this;
 					setTimeout(function(){
 						self.$parent.$parent.$apply();
+						console.log('applied');
 					},0);
 				},
 				index: 'in',
