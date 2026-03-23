@@ -36,6 +36,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
+        env:
+          VITE_GA_ID: G-QJYZC4H675
         run: pnpm build
 
       - name: Upload artifact

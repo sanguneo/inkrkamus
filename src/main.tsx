@@ -2,6 +2,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import '@/styles/app.css';
+import { initAnalytics, setupAutoPageViewTracking, setupGlobalClickTracking } from '@/lib/analytics';
+
+initAnalytics();
+setupAutoPageViewTracking();
+setupGlobalClickTracking();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

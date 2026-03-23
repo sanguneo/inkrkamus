@@ -12,6 +12,7 @@ import {
 import { DONATE_URL, BLOG_URL, LIST_OVERSCAN, MOBILE_BREAKPOINT, NEW_VOCA_URL, ROW_HEIGHT, SEARCH_DEBOUNCE_MS } from '@/constants/app';
 import { LANGUAGE_SET, getInitialLanguage } from '@/constants/language';
 import { emptyResult, krQualityMatch, sortWordsByPriority, withBaseUrl } from '@/lib/search-utils';
+import { trackEvent } from '@/lib/analytics';
 import { SearchForm } from '@/components/SearchForm';
 import { WordListPane } from '@/components/WordListPane';
 import { DetailPane } from '@/components/DetailPane';
@@ -440,11 +441,16 @@ export default function App() {
   const handleSearch = async (event: FormEvent) => {
     event.preventDefault();
     const query = searchInput.trim();
+    trackEvent('search_submit', {
+      search_type: searchType,
+      query_length: query.length,
+    });
     autoSearchRef.current = `${searchType}:${query}`;
     await performSearch(query, searchType, { silent: false, updateHistory: true });
   };
 
   const handleRomanizeToggle = () => {
+    trackEvent('romanize_toggle');
     setResult((previous) => {
       if (!previous.kr) return previous;
       if (previous.temporary) return { ...previous, kr: previous.temporary, temporary: undefined };
@@ -459,10 +465,12 @@ export default function App() {
   };
 
   const openExternal = (href: string) => {
+    trackEvent('outbound_click', { href });
     window.open(href, '_blank', 'noopener,noreferrer');
   };
 
   const openNewWordDialog = () => {
+    trackEvent('open_new_word_dialog');
     setInfoOpen(false);
     setNewWordDraft({ inWord: '', rt: '', en: '', kr: '' });
     setNewWordOpen(true);
@@ -495,13 +503,17 @@ export default function App() {
           langIconSrc={withBaseUrl('img/lang.png')}
           onSubmit={handleSearch}
           onSearchTypeChange={(nextType) => {
+            trackEvent('search_type_change', { search_type: nextType });
             setSearchType(nextType);
             setSelectedWordId(null);
             setWordList(allWords);
             resetListScroll();
           }}
           onSearchInputChange={setSearchInput}
-          onOpenLanguageSelect={() => setShowLanguageSelect(true)}
+          onOpenLanguageSelect={() => {
+            trackEvent('open_language_select');
+            setShowLanguageSelect(true);
+          }}
         />
       </header>
 
@@ -516,6 +528,7 @@ export default function App() {
           indexReady={indexReady}
           onScroll={setListScrollTop}
           onSelectWord={(id) => {
+            trackEvent('select_word', { word_id: id });
             void loadWordDetailById(id);
           }}
         />
@@ -524,7 +537,12 @@ export default function App() {
       </section>
 
       <footer className="bottombar">
-        <button type="button" onClick={() => setInfoOpen(true)}>
+        <button
+          type="button"
+          onClick={() => {
+            trackEvent('open_info_modal');
+            setInfoOpen(true);
+          }}>
           {t.information}
         </button>
         <div className="spacer" />
@@ -550,6 +568,7 @@ export default function App() {
         onClose={() => setNewWordOpen(false)}
         onChange={setNewWordDraft}
         onCopy={() => {
+          trackEvent('copy_new_word_template');
           void copyNewWordText();
         }}
         onOpenForm={() => openExternal(NEW_VOCA_URL)}
@@ -559,6 +578,7 @@ export default function App() {
         open={showLanguageSelect}
         onClose={() => setShowLanguageSelect(false)}
         onSelectLanguage={(key) => {
+          trackEvent('select_language', { language: key });
           setLanguageKey(key);
           setShowLanguageSelect(false);
         }}
