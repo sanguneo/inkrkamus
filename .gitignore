@@ -1,9 +1,6 @@
-.idea
-*.iml
-node_modules/*
-template/lib/*
-**/*.log
-npm-debug.log
-**/*.swp
-**/.DS_Store
 .DS_Store
+.env
+/node_modules/
+/dist/
+*.tsbuildinfo
+.idea
