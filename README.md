@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/img/info-logo.png" alt="InKrKamus Logo" width="320" />
+  <img src="./public/logo.png" alt="InKrKamus Logo" />
 </p>
 
 <h1 align="center">InKrKamus</h1>
